@@ -5,7 +5,8 @@ RM          = rm -f
 
 SRC         = main.c \
               utils.c \
-			  routine.c 
+			  routine.c \
+			  monitor.c 
 
 OBJ         = $(SRC:.c=.o)
 
