@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:35:09 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/22 20:36:19 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/23 15:54:54 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef struct s_data
 	pthread_mutex_t	safe_dead;
 	pthread_mutex_t	safe_full;
 	pthread_mutex_t	safe_print;
-	int				dead;
+	pthread_mutex_t	safe_start;
+	int				start;
+	int dead;
 	int				max_meals;
 
 }					t_data;

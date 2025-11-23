@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:35:30 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/22 22:18:14 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/23 16:04:29 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ void	destroy_mutexes(t_data *data)
 	pthread_mutex_destroy(&data->safe_full);
 	pthread_mutex_destroy(&data->safe_dead);
 	pthread_mutex_destroy(&data->safe_print);
+	pthread_mutex_destroy(&data->safe_start);
+
 }
 
 int	init_data(t_data *data, int ac, char **av)
 {
 	data->dead = 0;
 	data->all_full = 0;
+	data->start = 0;
 	data->start_time = get_time();
 	data->nb_of_philo = asciitouint(av[1]);
 	data->ttdie = asciitouint(av[2]);
@@ -48,6 +51,8 @@ int	init_data(t_data *data, int ac, char **av)
 	pthread_mutex_init(&data->safe_full, NULL);
 	pthread_mutex_init(&data->safe_dead, NULL);
 	pthread_mutex_init(&data->safe_print, NULL);
+	pthread_mutex_init(&data->safe_start, NULL);
+
 	return (0);
 }
 
@@ -68,7 +73,7 @@ void	init_philos(t_data *data, pthread_t *monitor)
 		data->philo[i].l_fork = &data->fork[i];
 		if (i + 1 == data->nb_of_philo)
 		{
-			//on est dans le cas du dernier philo, il doit les avoir a l'envers
+			
 			data->philo[i].l_fork = &data->fork[0];
 			data->philo[i].r_fork = &data->fork[i];
 		}
@@ -99,7 +104,10 @@ int	main(int ac, char **av)
 	if (init_data(&data, ac, av) != 0)
 		return (0);
 	init_philos(&data, &monitor);
-	//ici, tous les threads ont ete created, on peut dire que le feu est vert
+	pthread_mutex_lock(&data.safe_start);
+	data.start = 1;
+	pthread_mutex_unlock(&data.safe_start);
+	// ici, tous les threads ont ete created, on peut dire que le feu est vert
 	i = 0;
 	while (i < data.nb_of_philo)
 	{

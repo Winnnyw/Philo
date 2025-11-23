@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:16 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/22 22:08:37 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/23 16:04:48 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,22 @@ void	*routine(void *arg)
 	i = 0;
 	philo = (t_philo *)arg;
 	data = philo->data;
+	pthread_mutex_lock(&data->safe_start);
+	while (data->start != 1)
+	{
+		pthread_mutex_unlock(&data->safe_start);
+		usleep(100);
+		pthread_mutex_lock(&data->safe_start);
+	}
+	pthread_mutex_unlock(&data->safe_start);
+
 	if (one_philo(data))
 	{
 		printf("%d\n", data->nb_of_philo);
 		return (NULL);
 	}
 	if (philo->id % 2 == 0)
-		usleep(5000);
+		usleep(100);
 	while (1)
 	{
 		if (!check_if_dead(data))

@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 19:04:51 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/22 22:09:10 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/23 16:08:51 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	*routine_monitor(void *arg)
 				if (data->all_full == data->nb_of_philo)
 				{
 					pthread_mutex_unlock(&data->safe_full);
+					pthread_mutex_unlock(&data->philo[i].safe_lst_ml);
 					return (NULL);
 				}
 				pthread_mutex_unlock(&data->safe_full);
@@ -51,6 +52,6 @@ void	*routine_monitor(void *arg)
 			pthread_mutex_unlock(&data->philo[i].safe_lst_ml);
 			i++;
 		}
-		usleep(900);
+		usleep(100);
 	}
 }
