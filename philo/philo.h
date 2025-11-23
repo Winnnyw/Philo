@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:35:09 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 15:54:54 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/23 17:08:49 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_philo
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	safe_meals;
 	pthread_mutex_t	safe_lst_ml;
-	long last_meal;
+	long			last_meal;
 	int				nb_of_meals;
 	bool			full;
-	struct s_data *data;
+	struct s_data	*data;
 
 }					t_philo;
 
@@ -55,7 +55,7 @@ typedef struct s_data
 	pthread_mutex_t	safe_print;
 	pthread_mutex_t	safe_start;
 	int				start;
-	int dead;
+	int				dead;
 	int				max_meals;
 
 }					t_data;
@@ -75,9 +75,9 @@ bool			eating(t_data *data, t_philo *philo);
 void			sleeper(t_data *data, t_philo *philo);
 void			think(t_data *data, t_philo *philo);
 void			wait_full(t_data *data);
+int				routine_pt_1(t_philo *philo, t_data *data);
 
 // monitor
 void			*routine_monitor(void *arg);
-
 
 #endif
