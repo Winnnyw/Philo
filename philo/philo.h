@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:35:09 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:08:49 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:01:21 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # define ERR "Wrong number of arguments : ./philo [nb_of_philo] \
-	[tt_die] [tt_eat] [tt sleep] ?[nb_of_meals]\n"
+[tt_die] [tt_eat] [tt sleep] ?[nb_of_meals]\n"
 
 typedef struct s_philo
 {

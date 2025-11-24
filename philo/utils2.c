@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 16:52:44 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:57:59 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:12:51 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	routine_pt_1(t_philo *philo, t_data *data)
 	while (data->start != 1)
 	{
 		pthread_mutex_unlock(&data->safe_start);
-		usleep(100);
+		usleep(500);
 		pthread_mutex_lock(&data->safe_start);
 	}
 	pthread_mutex_unlock(&data->safe_start);
 	if (philo->id % 2 == 0)
-		usleep(1000);
+		usleep(5000);
 	return (1);
 }
 

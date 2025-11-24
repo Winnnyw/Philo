@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 19:04:51 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:05:36 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 21:01:43 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	routine_monitor_pt2(t_data *data, int i)
 		data->dead = 1;
 		pthread_mutex_unlock(&data->safe_dead);
 		pthread_mutex_lock(&data->safe_print);
-		printf("%li %d died\n", get_time() - data->start_time, \
+		printf("%li %d died\n", get_time() - data->start_time,
 			data->philo[i].id);
 		pthread_mutex_unlock(&data->safe_print);
 		pthread_mutex_unlock(&data->philo[i].safe_lst_ml);
@@ -59,6 +59,6 @@ void	*routine_monitor(void *arg)
 			pthread_mutex_unlock(&data->philo[i].safe_lst_ml);
 			i++;
 		}
-		usleep(100);
+		usleep(500);
 	}
 }

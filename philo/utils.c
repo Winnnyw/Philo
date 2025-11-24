@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:10:03 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:38:07 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:10:13 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	wait_full(t_data *data)
 		pthread_mutex_unlock(&data->safe_full);
 		if (!check_if_dead(data))
 			break ;
-		usleep(800);
+		usleep(500);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 15:35:30 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:34:59 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:46:09 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	init_data(t_data *data, int ac, char **av)
 	if (ac == 6)
 		data->max_meals = asciitouint(av[5]);
 	else
-		data->max_meals = -1;
-	if (data->nb_of_philo <= 0 || data->ttdie < 0 || data->tteat < 0 || \
-		data->ttsleep < 0)
+		data->max_meals = 0;
+	if (data->nb_of_philo <= 0 || data->ttdie < 0 || data->tteat < 0
+		|| data->ttsleep < 0 || data->max_meals < 0)
 		return (-1);
 	pthread_mutex_init(&data->safe_full, NULL);
 	pthread_mutex_init(&data->safe_dead, NULL);
@@ -76,7 +76,7 @@ void	init_philos(t_data *data, pthread_t *monitor)
 		}
 		else
 			data->philo[i].r_fork = &data->fork[i + 1];
-		pthread_create(&data->philo[i].philo_thread, NULL, routine, \
+		pthread_create(&data->philo[i].philo_thread, NULL, routine,
 			&data->philo[i]);
 		i++;
 	}

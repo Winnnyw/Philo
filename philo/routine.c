@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:39:16 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/23 17:56:54 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:10:08 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*routine(void *arg)
 		think(data, philo);
 		if (!check_if_dead(data))
 			break ;
-		usleep(900);
+		usleep(500);
 	}
 	return (NULL);
 }
@@ -64,8 +64,8 @@ bool	eating(t_data *data, t_philo *philo)
 		pthread_mutex_unlock(philo->r_fork);
 		return (wait_full(data), true);
 	}
-	return (pthread_mutex_unlock(&philo->safe_meals), \
-		pthread_mutex_unlock(philo->l_fork), \
+	return (pthread_mutex_unlock(&philo->safe_meals),
+		pthread_mutex_unlock(philo->l_fork),
 		pthread_mutex_unlock(philo->r_fork), false);
 }
 
@@ -101,6 +101,6 @@ void	time_check(t_data *data, long time_act)
 		pthread_mutex_unlock(&data->safe_dead);
 		if (get_time() - start_act > time_act)
 			break ;
-		usleep(900);
+		usleep(500);
 	}
 }
