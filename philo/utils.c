@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:10:03 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/24 22:29:38 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/25 18:18:38 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	asciitouint(char *str)
 	{
 		res = res * 10 + str[i++] - '0';
 		if (res > INT_MAX)
-			return (-1);
+			return (printf("(%s)Limit is int max\n", str), -1);
 	}
 	if (str[i] != '\0')
 	{
