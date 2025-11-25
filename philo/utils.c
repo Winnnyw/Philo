@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:10:03 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/24 16:10:13 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 22:29:38 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ int	asciitouint(char *str)
 	res = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i] == '-')
-			return (printf("(%s)Only positive numbers are accepted\n", str),
-				-1);
-		i++;
+		if (str[i++] == '-')
+			return (printf("(%s)Only positive numbers are allowed\n", str), -1);
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		res = res * 10 + str[i] - '0';
+		res = res * 10 + str[i++] - '0';
 		if (res > INT_MAX)
 			return (-1);
-		i++;
+	}
+	if (str[i] != '\0')
+	{
+		return (printf("(%s)Only positive numbers are allowed\n", str), -1);
 	}
 	return ((int)res);
 }

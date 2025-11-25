@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 16:52:44 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/24 16:12:51 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 22:24:09 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ bool	check_if_dead(t_data *data)
 		return (pthread_mutex_unlock(&data->safe_dead), false);
 	pthread_mutex_unlock(&data->safe_dead);
 	return (true);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rokilic <rokilic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:35:09 by rokilic           #+#    #+#             */
-/*   Updated: 2025/11/24 21:01:21 by rokilic          ###   ########.fr       */
+/*   Updated: 2025/11/24 22:24:20 by rokilic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void			safe_print(t_philo *philo, t_data *data, char *message);
 bool			check_if_dead(t_data *data);
 void			time_check(t_data *data, long time_act);
 void			destroy_mutexes(t_data *data);
+int				ft_isdigit(int c);
 
 // routine
 void			*routine(void *arg);
